@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\People;
 
 class TeraController extends Controller
 {
@@ -10,7 +11,9 @@ class TeraController extends Controller
         return view ('index');
     }
     public function create(Request $request){
-        $form=$request->all();
+        $people = new People;
+        $form = $request->all();
+        $people->fill($form)->save();
         return view ('thanks');
     }
 
